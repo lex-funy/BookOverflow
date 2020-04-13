@@ -36,6 +36,7 @@
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lbUsers = new System.Windows.Forms.ListBox();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtUsername
@@ -90,9 +91,9 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(37, 129);
+            this.btnAdd.Location = new System.Drawing.Point(12, 129);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(100, 23);
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Add user";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -106,11 +107,22 @@
             this.lbUsers.Size = new System.Drawing.Size(670, 420);
             this.lbUsers.TabIndex = 7;
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(12, 409);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(100, 23);
+            this.btnRemove.TabIndex = 8;
+            this.btnRemove.Text = "Remove user";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.lbUsers);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtConfirmPassword);
@@ -136,6 +148,7 @@
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ListBox lbUsers;
+        private System.Windows.Forms.Button btnRemove;
     }
 }
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookOverflowForms
+namespace BookOverflowForms.Logic
 {
-    class Database
+    class Image
     {
     }
 }

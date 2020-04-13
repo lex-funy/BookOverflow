@@ -16,9 +16,15 @@ namespace BookOverflowForms
 
         public Form1()
         {
-            this.users = new List<User>();
-
             InitializeComponent();
+
+            Database database = new Database();
+            this.users = database.GetAllUsers();
+
+            foreach (User user in this.users)
+            {
+                lbUsers.Items.Add(user);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -34,10 +40,8 @@ namespace BookOverflowForms
                     User user = new User(name, password);
                     users.Add(user);
 
-                    MessageBox.Show("SUCCESS: Users added to list");
-
-                    lbUsers.Items.Add(user);
-                    if (user.Create())
+                    Database database = new Database();
+                    if (database.AddUser(user))
                         MessageBox.Show("SUCCESS: Users added to database");
                     else 
                         MessageBox.Show("ERROR: User could not be added to database");
@@ -45,15 +49,47 @@ namespace BookOverflowForms
                     txtUsername.Text = "";
                     txtPassword.Text = "";
                     txtConfirmPassword.Text = "";
-                } 
+
+                    this.UpdateListBox();
+                }
                 else
                 {
                     MessageBox.Show("ERROR: Passwords don't match.");
                 }
-            } 
+            }
             else
             {
                 MessageBox.Show("ERROR: Not all fields are filled in.");
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            User user = (User)lbUsers.SelectedItem;
+
+            Database database = new Database();
+
+            if (database.RemoveUser(user.Id))
+            {
+
+                MessageBox.Show("SUCCESS: User removed");
+                users.Remove(user);
+            }
+            else
+            {
+                MessageBox.Show("ERROR: User not removed");
+            }
+
+            this.UpdateListBox();
+        }
+
+        private void UpdateListBox()
+        {
+            lbUsers.Items.Clear();
+
+            foreach (User user in users)
+            {
+                lbUsers.Items.Add(user);
             }
         }
     }
