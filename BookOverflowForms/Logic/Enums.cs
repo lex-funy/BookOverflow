@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace BookOverflowForms.Logic
 {
-    class Enums
+    public enum PermissionType
     {
-        public enum PermissionType
-        {
-            User = 100,
-            Admin = 500
-        }
+        User = 100,
+        Admin = 500
     }
+
 }

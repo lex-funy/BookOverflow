@@ -19,7 +19,7 @@ namespace BookOverflowForms.Data
 
         public Database()
         {
-            // FIXME: Put in config.
+            // TODO: Put in config.
             this.server   = "localhost";
             this.username = "root";
             this.password = "";
@@ -50,64 +50,6 @@ namespace BookOverflowForms.Data
         public void CloseConnection()
         {
             this.connection.Close();
-        }
-
-        public List<User> GetAllUsers()
-        {
-            this.OpenConnection();
-
-            MySqlCommand command = this.connection.CreateCommand();
-
-            command.CommandText = "SELECT ID, name FROM users WHERE deleted_at IS NULL";
-
-            MySqlDataReader result = command.ExecuteReader();
-
-            List<User> users = new List<User>();
-            while (result.Read())
-            {
-                int id = result.GetInt16(0);
-                string name = result.GetString(1);
-
-                users.Add(new User(id, name));
-            }
-
-            return users;
-        }
-
-        public User GetUserByID(int id)
-        {
-            this.OpenConnection();
-
-            MySqlCommand command = new MySqlCommand();
-            
-            command.CommandText = "SELECT name FROM users WHERE id = @id";
-            
-            command.Parameters.AddWithValue("@id", "id");
-
-            MySqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-
-            string name = reader.GetString(0);
-
-            return new User(id, name);
-        }
-
-        public bool RemoveUser(int id)
-        {
-            this.OpenConnection();
-
-            MySqlCommand command = this.connection.CreateCommand();
-
-            command.CommandText = "UPDATE users SET deleted_at = @deleted_at WHERE id = @id";
-
-            command.Parameters.AddWithValue("@deleted_at", DateTime.Now);
-            command.Parameters.AddWithValue("@id", id);
-
-            int affectedRows = command.ExecuteNonQuery();
-
-            if (affectedRows > 0)
-                return true;
-            return false;
         }
     }
 }

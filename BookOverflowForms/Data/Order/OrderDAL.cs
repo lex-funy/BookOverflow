@@ -4,29 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookOverflowForms.Logic
+namespace BookOverflowForms.Data
 {
-    class UserContainer
+    class OrderDAL
     {
-        public List<User> GetAllUsers()
+        public static bool Save(OrderDTO orderDTO)
+        {
+            // TODO: Fill
+
+            return false;
+        }
+
+        public static List<OrderDTO> GetAll()
         {
             // TODO: Fill
 
             return null;
         }
 
-        public User GetUserById(int id)
+        public static OrderDTO GetById(int id)
         {
             // TODO: Fill
 
-            return null;
-        }
-
-        public List<User> GetAllByName(string firstName, string insertion, string lastName)
-        {
-            // TODO: Fill
-
-            return null;
+            return new OrderDTO();
         }
     }
 }
